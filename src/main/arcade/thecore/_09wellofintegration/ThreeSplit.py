@@ -31,3 +31,20 @@
 # It's guaranteed that for the given test cases the answer always fits signed 32-bit integer type.
 
 
+def solution(a):
+    one_third_sum = sum(a)/3
+    val = 0
+    first = 0
+    ways = 0
+    for i in range(len(a) - 1):
+        val += a[i]
+        if one_third_sum != 0:
+            if val == one_third_sum:
+                first += 1
+            if val == 2 * one_third_sum:
+                ways += first
+        else:
+            if val == one_third_sum:
+                first += 1
+                ways += first - 1
+    return ways
